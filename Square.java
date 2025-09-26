@@ -1,8 +1,8 @@
 public class Square extends Shape{
 
    private float side;
-   
-   public Square(int id, float x, float y){
+
+   public Square(int id, float x, float y, float side){
     super(id,x,y);
    }
 
@@ -11,12 +11,15 @@ public class Square extends Shape{
    }
 
    @Override
-   public float getArea(){
+   public double getArea(){
     return side*side;
    }
    @Override
-   public float getPerimeter(){
+   public double getPerimeter(){
     return side * 4;
    }
-    
+
+   public float getSide(){
+    return side;
+   }
 }
