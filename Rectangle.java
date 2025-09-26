@@ -19,5 +19,7 @@ public class Rectangle extends Square{
         return getSide() * 2 + height * 2;
     }
 
-
+    public float getHeight(){
+        return height;
+    }
 }
