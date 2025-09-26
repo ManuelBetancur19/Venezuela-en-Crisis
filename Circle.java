@@ -2,7 +2,7 @@ public class Circle extends Shape{
 
     private double radio;
 
-    public Circle (int id, float x, float y){
+    public Circle (int id, float x, float y, double radio){
         super(id, x, y);
     }
 
