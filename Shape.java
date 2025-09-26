@@ -19,8 +19,8 @@ public abstract class Shape{
         this.y = y;
     }
 
-    public abstract float getArea();
-    public abstract float getPerimeter();
+    public abstract double getArea();
+    public abstract double getPerimeter();
 
     public int getId(){
         return id;
