@@ -19,4 +19,9 @@ public class Circle extends Shape{
         return(Math.PI*(radio*radio));
     }
 
+    @Override
+    public double getPerimeter(){
+        return(2*Math.PI*getRadio());
+    }
+
 }
