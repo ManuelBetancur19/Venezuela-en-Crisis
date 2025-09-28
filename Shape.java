@@ -1,34 +1,40 @@
-public abstract class Shape{
+public abstract class Shape {
 
     private int id;
-    private float x;
-    private float y;
+    private float xCoordinate;
+    private float yCoordinate;
 
-    public Shape(int id, float x, float y){
+    public Shape(int id, float xCoordinate, float yCoordinate) {
         this.id = id;
-        this.x = x;
-        this.y = y;
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    public void setX(float x){
-        this.x = x;
+
+    public void setX(float xCoordinate) {
+        this.xCoordinate = xCoordinate;
     }
-    public void setY(float y){
-        this.y = y;
+
+    public void setY(float yCoordinate) {
+        this.yCoordinate = yCoordinate;
     }
 
     public abstract double getArea();
+
     public abstract double getPerimeter();
 
-    public int getId(){
+    public int getId() {
         return id;
     }
-    public float getX(){
-        return x;
+
+    public float getX() {
+        return xCoordinate;
     }
-    public float getY(){
-        return y;
+
+    public float getY() {
+        return yCoordinate;
     }
 }
