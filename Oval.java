@@ -10,6 +10,10 @@ public class Oval extends Circle{
         return Math.PI*radio2*getRadio();
     }
 
+    public void setRadio2(double radio2){
+        this.radio2=radio2;
+    }
+
     @Override
     public double getPerimeter() {
     double a = getRadio();   // semieje mayor
