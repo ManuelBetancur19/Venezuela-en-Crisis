@@ -1,7 +1,7 @@
 public class Oval extends Circle{
     private double radio2;
 
-    public Oval (int id, float x,float y,double radio){
+    public Oval (int id, float x,float y,double radio,double radio2){
         super(id, x, y, radio);
     }
 
