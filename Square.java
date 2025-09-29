@@ -4,10 +4,15 @@ public class Square extends Shape {
 
    public Square(int id, float xCoordinate, float yCoordinate, float side) {
       super(id, xCoordinate, yCoordinate);
+      this.side = side;
    }
 
    public void setSide(int side) {
       this.side = side;
+   }
+
+   public float getSide() {
+      return side;
    }
 
    @Override
@@ -20,7 +25,13 @@ public class Square extends Shape {
       return side * 4;
    }
 
-   public float getSide() {
-      return side;
+   @Override
+   public String getDimensions() {
+      return "lado: " + side;
+   }
+
+   @Override
+   public String getShapeType(){
+      return "Cuadrado";
    }
 }

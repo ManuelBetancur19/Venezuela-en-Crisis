@@ -4,6 +4,7 @@ public class Oval extends Circle {
 
     public Oval(int id, float xCoordinate, float yCoordinate, double radio, double radio2) {
         super(id, xCoordinate, yCoordinate, radio);
+        this.radio2 = radio2;
     }
 
     public void setRadio2(double radio2) {
@@ -22,4 +23,13 @@ public class Oval extends Circle {
         return Math.PI * (3 * (a + b) - Math.sqrt((3 * a + b) * (a + 3 * b)));
     }
 
+    @Override
+    public String getDimensions() {
+        return "radio mayor: " + getRadio() + ", radio menor: " + radio2;
+    }
+
+    @Override
+    public String getShapeType() {
+        return "Ovalo";
+    }
 }

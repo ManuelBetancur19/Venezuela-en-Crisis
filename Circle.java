@@ -4,6 +4,7 @@ public class Circle extends Shape {
 
     public Circle(int id, float xCoordinate, float yCoordinate, double radio) {
         super(id, xCoordinate, yCoordinate);
+        this.radio = radio;
     }
 
     public void setRadio(float radio) {
@@ -22,6 +23,16 @@ public class Circle extends Shape {
     @Override
     public double getPerimeter() {
         return (2 * Math.PI * getRadio());
+    }
+
+    @Override
+    public String getDimensions() {
+        return "radio " + radio;
+    }
+
+    @Override
+    public String getShapeType() {
+        return "Circulo";
     }
 
 }

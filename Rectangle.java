@@ -4,10 +4,15 @@ public class Rectangle extends Square {
 
     public Rectangle(int id, float xCoordinate, float yCoordinate, float side, float height) {
         super(id, xCoordinate, yCoordinate, side);
+        this.height = height;
     }
 
     public void setHeight(float height) {
         this.height = height;
+    }
+
+    public float getHeight() {
+        return height;
     }
 
     @Override
@@ -20,7 +25,14 @@ public class Rectangle extends Square {
         return getSide() * 2 + height * 2;
     }
 
-    public float getHeight() {
-        return height;
+    @Override
+    public String getDimensions() {
+        return "base: " + getSide() + ", altura: " + height;
     }
+
+    @Override
+    public String getShapeType(){
+        return "Rectangulo";
+    }
+
 }

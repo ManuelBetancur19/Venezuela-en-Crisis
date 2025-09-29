@@ -26,6 +26,10 @@ public abstract class Shape {
 
     public abstract double getPerimeter();
 
+    public abstract String getDimensions();
+
+    public abstract String getShapeType();
+
     public int getId() {
         return id;
     }
