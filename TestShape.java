@@ -150,9 +150,7 @@ public class TestShape {
                             for (Shape shape : shapelist.getShapeList()) {
                                 screen.println("Figura " + n);
                                 screen.println("Tipo de figura: " + shape.getShapeType());
-                                screen.println(
-                                        "Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + "," + shape.getY()
-                                                + ")");
+                                screen.println("Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + "," + shape.getY() + ")");
                                 screen.println("Dimensiones: " + shape.getDimensions());
                                 screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter()
                                         + "\n-----------------");
@@ -170,8 +168,7 @@ public class TestShape {
                                 Shape shape = shapelist.findById(num);
                                 screen.println("-----Informacion-----");
                                 screen.println("Figura: " + shape.getShapeType());
-                                screen.println("Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + ","
-                                        + shape.getY() + ")");
+                                screen.println("Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + "," + shape.getY() + ")");
                                 screen.println("Dimensiones: " + shape.getDimensions());
                                 screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter());
 
