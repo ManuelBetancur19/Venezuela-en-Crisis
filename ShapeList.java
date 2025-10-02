@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeList {
-    private ArrayList<Shape> shapes;
+    
+    private final ArrayList<Shape> shapes;
 
     public ShapeList() {
         shapes = new ArrayList<>();
