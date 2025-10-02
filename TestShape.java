@@ -8,7 +8,7 @@ public class TestShape {
 
     public static void main(String[] args) {
 
-        int a = 0, n = 1, id;
+        int a = 0, n = 1,k=0, id;
         float xCoordinate, yCoordinate;
         float side1, side2, side3;
         double radio1, radio2;
@@ -33,6 +33,7 @@ public class TestShape {
                         xCoordinate = keyboard.nextFloat();
                         screen.println("Ingrese la coordenada y");
                         yCoordinate = keyboard.nextFloat();
+                        k++;
                         switch (shape) {
                             case 1 -> {
                                 screen.print("Ingrese las dimensiones del cuadrado\nLado: ");
@@ -119,6 +120,10 @@ public class TestShape {
                         }
                     }
                     case 2 -> {
+                        if (k==0) {
+                          System.out.println("Aun no hay figuras creadas");  
+                        }
+                        else{
                         screen.println("-----Informacion de las figuras creadas-----");
                         for (Shape shape : shapelist.getShapeList()) {
                             screen.println("Figura " + n);
@@ -131,9 +136,14 @@ public class TestShape {
                                     + "\n-----------------");
                             n++;
                         }
+                     }
                     }
                     case 3 -> {
-                        screen.println("-----Ingrese el Id de la figura-----");
+                        if (k==0) {
+                            System.out.println("Aun no hay figuras creadas");
+                        }
+                        else{
+                            screen.println("-----Ingrese el Id de la figura-----");
                         int num = keyboard.nextInt();
                         if (shapelist.findById(num) != null) {
                             Shape shape = shapelist.findById(num);
@@ -146,12 +156,20 @@ public class TestShape {
 
                         } else {
                             screen.println("No existe figura con esa Id");
+                            }
                         }
+                        
                     }
                     case 4 -> {
-                        screen.println("-----Area y perimetro total-----");
+                        if (k==0) {
+                            System.out.println("Aun no hay figuras creadas");
+                        }
+                        else{
+                            screen.println("-----Area y perimetro total-----");
                         screen.println("Area total de la figura/s: " + shapelist.getAreaShapes());
                         screen.println("Perimetro total de las figura/s: " + shapelist.getPerimeterShapes());
+                        }
+                        
                     }
                     case 5 -> {
                         screen.println("Ha decidido salir del programa, vuelva pronto");
