@@ -8,7 +8,7 @@ public class TestShape {
 
     public static void main(String[] args) {
 
-        int a = 0, n = 1,k=0, id;
+        int a = 0, n = 1, k = 0, id;
         float xCoordinate, yCoordinate;
         float side1, side2, side3;
         double radio1, radio2;
@@ -26,15 +26,21 @@ public class TestShape {
                     case 1 -> {
                         screen.println("-----Escoja la figura a crear-----\n");
                         screen.println("1- Cuadrado\n2- Rectangulo\n3- Triangulo\n4- Circulo\n5- Ovalo");
-                        int shape = keyboard.nextInt();
+                        int num = keyboard.nextInt();
                         screen.println("Ingrese el Id de la figura");
                         id = keyboard.nextInt();
+                        for (Shape s : shapelist.getShapeList()) {
+                            while (s.getId()==id) {
+                                System.out.println("Este id ya esta asignado a una figura, ingrese otro");
+                                id = keyboard.nextInt();
+                            }                            
+                        }
                         screen.println("Ingrese la coordenada x");
                         xCoordinate = keyboard.nextFloat();
                         screen.println("Ingrese la coordenada y");
                         yCoordinate = keyboard.nextFloat();
                         k++;
-                        switch (shape) {
+                        switch (num) {
                             case 1 -> {
                                 screen.print("Ingrese las dimensiones del cuadrado\nLado: ");
                                 side1 = keyboard.nextFloat();
@@ -55,13 +61,21 @@ public class TestShape {
                                 }
                                 screen.print("Altura: ");
                                 side2 = keyboard.nextFloat();
-                                while (side2 <= 0) {
+                                while (side2 <= 0 ) {
                                     screen.println("Las dimensiones ingresadas no son validas");
                                     side2 = keyboard.nextFloat();
                                 }
-                                Rectangle rectangle = new Rectangle(id, xCoordinate, yCoordinate, side1, side2);
+                                if (side1==side2) {
+                                    Square square = new Square(id,xCoordinate,yCoordinate,side1);
+                                    System.out.println("Un rectangulo con lados iguales es un cuadrado, acabas de crear un cuadrado");
+                                    shapelist.addShape(square);
+                                }
+                                else{
+                                    Rectangle rectangle = new Rectangle(id, xCoordinate, yCoordinate, side1, side2);
                                 screen.println("El rectangulo ha sido creado");
                                 shapelist.addShape(rectangle);
+                                }
+                                
                             }
                             case 3 -> {
                                 screen.print("Ingrese las dimensiones del Triangulo\nLado 1: ");
@@ -110,9 +124,18 @@ public class TestShape {
                                     screen.println("Las dimensiones ingresadas no son validas");
                                     radio2 = keyboard.nextDouble();
                                 }
-                                Oval oval = new Oval(id, xCoordinate, yCoordinate, radio1, radio2);
+                                if (radio1==radio2) {
+                                    Circle circle =new Circle(id,xCoordinate,yCoordinate,radio1);
+                                    System.out.println("Un ovalo de radios iguales es un circulo, acabas de crear un circulo");
+                                    shapelist.addShape(circle);
+
+                                }
+                                else{
+                                    Oval oval = new Oval(id, xCoordinate, yCoordinate, radio1, radio2);
                                 screen.println("El ovalo ha sido creado");
                                 shapelist.addShape(oval);
+                                }
+                                
                             }
                             default -> {
                                 screen.println("No es una opcion valida, vuelva a escojer");
@@ -120,56 +143,53 @@ public class TestShape {
                         }
                     }
                     case 2 -> {
-                        if (k==0) {
-                          System.out.println("Aun no hay figuras creadas");  
-                        }
-                        else{
-                        screen.println("-----Informacion de las figuras creadas-----");
-                        for (Shape shape : shapelist.getShapeList()) {
-                            screen.println("Figura " + n);
-                            screen.println("Tipo de figura: " + shape.getShapeType());
-                            screen.println(
-                                    "Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + "," + shape.getY()
-                                            + ")");
-                            screen.println("Dimensiones: " + shape.getDimensions());
-                            screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter()
-                                    + "\n-----------------");
-                            n++;
-                        }
-                     }
-                    }
-                    case 3 -> {
-                        if (k==0) {
+                        if (k == 0) {
                             System.out.println("Aun no hay figuras creadas");
-                        }
-                        else{
-                            screen.println("-----Ingrese el Id de la figura-----");
-                        int num = keyboard.nextInt();
-                        if (shapelist.findById(num) != null) {
-                            Shape shape = shapelist.findById(num);
-                            screen.println("-----Informacion-----");
-                            screen.println("Figura: " + shape.getShapeType());
-                            screen.println("Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + ","
-                                    + shape.getY() + ")");
-                            screen.println("Dimensiones: " + shape.getDimensions());
-                            screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter());
-
                         } else {
-                            screen.println("No existe figura con esa Id");
+                            screen.println("-----Informacion de las figuras creadas-----");
+                            for (Shape shape : shapelist.getShapeList()) {
+                                screen.println("Figura " + n);
+                                screen.println("Tipo de figura: " + shape.getShapeType());
+                                screen.println(
+                                        "Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + "," + shape.getY()
+                                                + ")");
+                                screen.println("Dimensiones: " + shape.getDimensions());
+                                screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter()
+                                        + "\n-----------------");
+                                n++;
                             }
                         }
-                        
+                    }
+                    case 3 -> {
+                        if (k == 0) {
+                            System.out.println("Aun no hay figuras creadas");
+                        } else {
+                            screen.println("-----Ingrese el Id de la figura-----");
+                            int num = keyboard.nextInt();
+                            if (shapelist.findById(num) != null) {
+                                Shape shape = shapelist.findById(num);
+                                screen.println("-----Informacion-----");
+                                screen.println("Figura: " + shape.getShapeType());
+                                screen.println("Id: " + shape.getId() + "\nCoordenadas: (" + shape.getX() + ","
+                                        + shape.getY() + ")");
+                                screen.println("Dimensiones: " + shape.getDimensions());
+                                screen.println("Area: " + shape.getArea() + "\nPerimetro: " + shape.getPerimeter());
+
+                            } else {
+                                screen.println("No existe figura con esa Id");
+                            }
+                        }
+
                     }
                     case 4 -> {
-                        if (k==0) {
+                        if (k == 0) {
                             System.out.println("Aun no hay figuras creadas");
-                        }
-                        else{
+                        } else {
                             screen.println("-----Area y perimetro total-----");
-                        screen.println("Area total de la figura/s: " + shapelist.getAreaShapes());
-                        screen.println("Perimetro total de las figura/s: " + shapelist.getPerimeterShapes());
+                            screen.println("Area total de la figura/s: " + shapelist.getAreaShapes());
+                            screen.println("Perimetro total de las figura/s: " + shapelist.getPerimeterShapes());
                         }
-                        
+
                     }
                     case 5 -> {
                         screen.println("Ha decidido salir del programa, vuelva pronto");
